@@ -1,0 +1,8 @@
+Flask
+connexion
+fastavro
+Flask-Injector
+flask-sqlalchemy
+marshmallow_sqlalchemy
+marshmallow
+pymysql

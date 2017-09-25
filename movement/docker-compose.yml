@@ -1,0 +1,28 @@
+---
+version: "2"
+
+services:
+
+  app:
+    build: .
+    environment:
+      - MODE=dev
+    volumes:
+      - .:/codea
+    depends_on:
+      - mysql
+    ports:
+      - "9091:9090"
+
+  mysql:
+    image: mysql:5.6.26
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=testdb
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql_data:
