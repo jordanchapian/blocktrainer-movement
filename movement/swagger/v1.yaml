@@ -8,6 +8,10 @@ basePath: /v1
 
 paths:
 
+  #
+  # MOVEMENTS Resource
+  #
+
   /movements/{movement_id}:
     parameters:
       - $ref: '#/parameters/movement_id'
@@ -20,8 +24,7 @@ paths:
           schema:
             $ref: '#/definitions/Movement'
 
-
-  /movements/:
+  /movements:
     get:
       responses:
         '200':
@@ -39,6 +42,103 @@ paths:
           schema:
             $ref: '#/definitions/Movement'
 
+  
+
+  /blocks:
+    get:
+      responses:
+        '200':
+          description: 'Fetch a list of blocks'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Block'
+    post:
+      parameters:
+        - $ref: '#/parameters/block_body'
+      responses:
+        '200':
+          description: 'block has been created'
+          schema:
+            $ref: '#/definitions/Block'
+
+  /blocks/{block_id}:
+    parameters:
+      - $ref: '#/parameters/block_id'
+    put:
+      parameters:
+        - $ref: '#/parameters/block_body'
+      responses:
+        '200':
+          description: 'Put a block by Id'
+          schema:
+            $ref: '#/definitions/Block'
+
+
+#  /blocks/{block_id}/movements:
+#  /movements/{movement_id}/tagConfigs/:
+#      get:
+#      post:
+#  /blocks/{block_id}/tagConfigs:
+#  /tags/:
+#    get:
+#    post:
+#
+#  /tags/{tag_id}/tagKeys/:
+#    get:
+#    post:
+#
+#  /tagKeys/:
+#    get:
+#    post:
+#
+#  /tagKeys/{tag_key_id}:
+#
+#  /tagConfigs/:
+#    get:
+#    post:
+#
+#
+#  # THIS IS USER DATA
+#  /sessions/: # Automatically apply to calling user
+#    post:
+#    get:
+#
+#  /sessions/{session_id}/:
+#    get:
+#    put:
+#    delete:
+#
+#  /sessionBlocks/:
+#    post:
+#    get:
+#
+#  /sessionBlocks/{session_block_id}:
+#    get:
+#    put:
+#    delete:
+#
+#  /sessionBlocks/{session_block_id}/sessionBlockConfig:
+#    get:
+#
+#  /sessionBlockConfig/:
+#    get:
+#    post:
+#
+#  /sessionBlockConfig/{session_block_config_id}:
+#    get:
+#    put:
+#    delete:
+#
+#  /splits/: # Automatically apply to calling user
+#  /splits/{split_id}/:
+#
+#  # Workflow endpoints
+#  /user/{user_id}/sessions/:
+#  /user/{user_id}/splits/:
+
+
+
 parameters:
   movement_id:
     name: movement_id
@@ -52,6 +152,19 @@ parameters:
     required: true
     schema:
       $ref: '#/definitions/Movement'
+  
+  block_id:
+    name: block_id
+    description: blocks's Unique identifier
+    in: path
+    type: integer
+    required: true
+  block_body:
+    in: body
+    name: block
+    required: true
+    schema:
+      $ref: '#/definitions/Block'
 
 definitions:
   Movement:
@@ -60,6 +173,16 @@ definitions:
       id:
         type: integer
         format: int64
-      name:
+      title:
+        type: string
+        format: uuid
+  
+  Block:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      title:
         type: string
         format: uuid

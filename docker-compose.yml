@@ -1,0 +1,15 @@
+version: "2"
+
+  services:
+    
+    movement:
+      build: ./movement
+    
+    engine:
+      build: ./engine
+
+    timeline:
+      build: ./timeline
+
+    auth:
+      build: ./auth

@@ -8,21 +8,39 @@ services:
     environment:
       - MODE=dev
     volumes:
-      - .:/codea
+      - .:/code
     depends_on:
-      - mysql
+      - mongodb
     ports:
       - "9091:9090"
 
-  mysql:
-    image: mysql:5.6.26
+  mongodb:
+    image: mongo:3.4.9
+    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=testdb
-    volumes:
-      - mysql_data:/var/lib/mysql
+        - TZ=America/New_York
     ports:
-      - "3306:3306"
+        - "27017:27017"
+    logging:
+        driver: json-file
+        options:
+            max-file: "10"
+            max-size: "10m"
 
-volumes:
-  mysql_data:
+  mongo-client:
+    image: mongoclient/mongoclient:2.2.0
+    restart: always
+    links:
+        - mongodb
+    volumes:
+        - ./mongo-client-data:/data/db
+    environment:
+        - TZ=America/New_York
+        - MONGO_URL=mongodb://mongodb:27017
+    ports:
+        - "3027:3000"
+    logging:
+        driver: json-file
+        options:
+            max-file: "10"
+            max-size: "10m"
