@@ -52,3 +52,8 @@ class Movements:
         'title': 'T-Bar Row',
         'id': 't-bar-row'
     }
+
+class MovementsAPI():
+    @staticmethod
+    def get_all():
+        return []

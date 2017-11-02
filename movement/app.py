@@ -2,7 +2,6 @@ import connexion
 from connexion.resolver import RestyResolver
 from models.connection import db
 
-
 if __name__ == '__main__':
     connexionApp = connexion.App(__name__, specification_dir='swagger/')
     connexionApp.add_api('v1.yaml', resolver=RestyResolver('api.v1'))
