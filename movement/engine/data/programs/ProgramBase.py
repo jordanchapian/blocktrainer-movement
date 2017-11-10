@@ -1,18 +1,18 @@
 from abc import abstractmethod, ABCMeta
 from typing import List, Dict
-from engine.data.programs.configurationOptions import ConfigurationSelection
+from engine.data.programs.configuration import ConfigurationSelection, ConfigurationOptionGroup
 
 
 class ProgramBase(metaclass=ABCMeta):
 
     @property
     @abstractmethod
-    def configuration_options(self):
-        return []
+    def configuration_options(self) -> ConfigurationOptionGroup:
+        return ConfigurationOptionGroup([])
 
     @property
     @abstractmethod
-    def key(self):
+    def id(self):
         return None
 
     @abstractmethod
@@ -26,8 +26,8 @@ class ProgramBase(metaclass=ABCMeta):
 
 def program_to_dict(program: ProgramBase) -> Dict:
     output = {
-        'key': program.key,
-        'configuration_options': list(map(lambda x: x.to_dict(), program.configuration_options))
+        'id': program.id,
+        'configuration_options': list(map(lambda x: x.to_dict(), program.configuration_options.options))
     }
 
     return output

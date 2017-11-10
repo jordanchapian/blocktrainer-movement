@@ -8,7 +8,7 @@ class ProgramsAPI(object):
         five_by_five_api
     ]
 
-    __program_list_map = {x.key: x for x in __program_list}
+    __program_list_map = {x.id: x for x in __program_list}
 
     print(__program_list)
 
@@ -17,8 +17,8 @@ class ProgramsAPI(object):
         return ProgramsAPI.__program_list
 
     @staticmethod
-    def get(key: str) -> [ProgramBase, None]:
-        if key not in ProgramsAPI.__program_list_map:
+    def get(id: str) -> [ProgramBase, None]:
+        if id not in ProgramsAPI.__program_list_map:
             return None
         else:
-            return ProgramsAPI.__program_list_map[key]
+            return ProgramsAPI.__program_list_map[id]
