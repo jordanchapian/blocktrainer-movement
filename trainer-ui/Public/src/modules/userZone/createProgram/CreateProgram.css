@@ -1,0 +1,17 @@
+#createProgram .programHeader {
+  height: 75px;
+  background: #fbfbfb;
+  width: 100%;
+  border-bottom: solid 1px #efefef;
+  position: fixed;
+  left: 240px;
+  top: 60px; }
+
+#createProgram .programFooter {
+  height: 40px;
+  background: #fbfbfb;
+  width: 100%;
+  border-top: solid 1px #efefef;
+  position: fixed;
+  left: 240px;
+  bottom: 0px; }
