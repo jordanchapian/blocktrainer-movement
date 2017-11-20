@@ -1,15 +1,17 @@
 {
-  "name": "sova-ui-auth",
-  "author": "Cisco Systems",
+  "name": "freelance-trainer",
+  "author": "Jordan Chapian",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "cisco-ui-react": "git+http://wwwin-gitlab-sjc.cisco.com/cisco-ui-react/cisco-ui-react",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "v1.0.0-beta.20",
+    "material-ui-icons": "1.0.0-beta.17",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.2",
@@ -17,7 +19,7 @@
     "react-scripts": "1.0.11",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "material-ui-icons": "1.0.0-beta.17"
+    "underscore": "^1.8.3"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",

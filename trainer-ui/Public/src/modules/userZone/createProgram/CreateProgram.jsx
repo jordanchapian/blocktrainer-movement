@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ProgramTimeline from './timeline/ProgramTimeline';
+
 
 import './CreateProgram.css';
 
@@ -8,14 +10,9 @@ class CreateProgram extends Component {
 
         return (
             <div id="createProgram" >
-                <div className="programHeader">
-                    
-                </div>
-                <div className="programContent">
-
-                </div>
-                <div className="programFooter">
-
+                <div className='timelineContainer'>
+                  <ProgramTimeline>
+                  </ProgramTimeline>
                 </div>
             </div>
         );

@@ -1,11 +1,20 @@
 #createProgram .programHeader {
-  height: 75px;
+  height: 74px;
   background: #fbfbfb;
   width: 100%;
   border-bottom: solid 1px #efefef;
   position: fixed;
   left: 240px;
   top: 60px; }
+
+#createProgram .programWeeks {
+  width: 330px;
+  height: calc(100% - 60px - 75px - 40px);
+  position: fixed;
+  left: 240px;
+  bottom: 40px;
+  background: #fbfbfb;
+  border-right: solid 1px #efefef; }
 
 #createProgram .programFooter {
   height: 40px;

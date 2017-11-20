@@ -1,0 +1,224 @@
+#ProgramTimeline{
+  //color
+  $track-active:#969696;
+  $track-inactive:#d2d0d0;
+
+  // CONTAINER
+  $container-width: 380px;
+  .ProgramTimeline-container{
+    width: $container-width;
+    padding-bottom:50px;
+  }
+
+  //PATH
+  $dot-diameter: 25px;
+  $path-width:5px;
+
+  //ANNOTATION
+  $day-annotation-width:60px;
+  $speech-bubble-arm-width:30px;
+
+  .ProgramTimelineWeekIndicator.beforeActive{
+      .path{
+        background: $track-active;
+      }
+  }
+
+  .ProgramTimelineWeekIndicator{
+      position: relative;
+
+      .text{
+        line-height:50px;
+        font-size:20px;
+        margin-left: $day-annotation-width;
+        text-transform: capitalize;
+        color:#d2d0d0;
+        padding:10px 0 5px 0;
+      }
+      .path{
+        position: absolute;
+        right: ($dot-diameter / 2) - ($path-width / 2);
+        top: 0;
+
+        width: $path-width;
+        height:100%;
+
+        background: $track-inactive;
+      }
+  }
+
+  .ProgramTimelineAnnotation.active{
+    .pre-path{
+      background: $track-active;
+    }
+    .path-dot{
+      background: $track-active;
+    }
+  }
+
+  .ProgramTimelineAnnotation.beforeActive{
+    .pre-path, .post-path{
+      background: $track-active;
+    }
+    .path-dot{
+      background: $track-active;
+    }
+  }
+
+  .ProgramTimelineAnnotation{
+    width: $container-width;
+    position:relative;
+    padding:5px 0;
+    .pre-path{
+        position: absolute;
+        right: ($dot-diameter / 2) - ($path-width / 2);
+        top: 0;
+
+        width: $path-width;
+        height:50%;
+
+        background: $track-inactive;
+    }
+
+    .post-path{
+        position: absolute;
+        right: ($dot-diameter / 2) - ($path-width / 2);
+        bottom: 0;
+
+        width: $path-width;
+        height:50%;
+
+        background: $track-inactive;
+    }
+
+    .path-dot{
+        width:$dot-diameter;
+        height:$dot-diameter;
+        border-radius: 99px;
+
+        background: $track-inactive;
+
+        position: absolute;
+        right:0px;
+        top:calc(50% - 12.5px);
+        cursor:pointer;
+
+        &:hover{
+            background: $track-active;
+            transition: 300ms;
+        }
+    }
+
+    .day-annotation{
+      width: $day-annotation-width;
+      height: 100%;
+
+      position: absolute;
+      left: 0;
+      top:0;
+      color:#d2d0d0;
+
+      cursor: default;
+
+      .middle{
+        position:absolute;
+        top:calc(50% - 12.5px);
+        left:0px;
+        width: 100%;
+        text-align: center;
+        font-size:25px;
+      }
+    }
+
+    .card{
+      position: relative;
+      border:solid 1px #d2d0d0;
+      margin-left: $day-annotation-width;
+
+      width: $container-width - $day-annotation-width - $speech-bubble-arm-width - $dot-diameter;
+      background: #fbfbfb;
+      &:after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 15px 0 15px 20px;
+        border-color: transparent #fbfbfb;
+        display: block;
+        width: 0;
+        z-index: 1;
+        right: -20px;
+        // top: 43px;
+        top:calc(50% - 15px);
+      }
+
+      &:before{
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 16px 0 16px 21px;
+        border-color: transparent #d2d0d0;
+        display: block;
+        width: 0;
+        z-index: 0;
+        right: -21px;
+        top:calc(50% - 16px);
+      }
+
+      &:hover{
+          .top-tools{
+            opacity: 1;
+          }
+      }
+
+      .top-tools{
+        position: relative;
+        height:30px;
+        opacity: 0;
+        transition:150ms;
+
+        .dragHandle:hover{
+            color:#8f8f8f;
+            cursor: move;
+        }
+
+        .dragHandle{
+          width: 25px;
+          height: 25px;
+          margin:2.5px;
+          color: #d3d0d0;
+          transition: 300ms;
+        }
+      }
+
+      .bottom-tools{
+        height:30px;
+      }
+
+      ul.sessions{
+        list-style: none;
+        margin:0 30px;
+        padding:0px;
+
+        li{
+          font-size:22px;
+          margin:0 0 10px 0;
+          padding:0;
+
+          &.non-actionable{
+              color:#8f8f8f;
+          }
+
+          &.actionable{
+
+              color:#72c2f2;
+          }
+
+          &:last-child{
+              margin-bottom:0px;
+          }
+        }
+
+      }
+    }
+  }
+}
